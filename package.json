@@ -20,7 +20,7 @@
     "@tauri-apps/plugin-dialog": "^2.7.1",
     "@tauri-apps/plugin-shell": "^2.0.1",
     "@types/dompurify": "^3.0.5",
-    "dompurify": "^3.4.4",
+    "dompurify": "^3.4.12",
     "marked": "^18.0.3",
     "pinia": "^3.0.4",
     "vue": "^3.5.34"
