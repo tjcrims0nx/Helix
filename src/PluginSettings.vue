@@ -743,9 +743,9 @@ button:disabled {
 
 .command code {
   display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 4px 10px;

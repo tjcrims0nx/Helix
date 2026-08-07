@@ -1,7 +1,7 @@
 {
   "name": "helix-desktop",
   "private": true,
-  "version": "0.6.7",
+  "version": "0.6.8",
   "type": "module",
   "description": "HELIX — local-first chat dashboard for uncensored language models",
   "scripts": {

@@ -372,14 +372,15 @@ pub async fn ensure_server(model_path: &Path, app_dir: &Path) -> Result<(), anyh
     }
 
     // Check if server is already running with the exact same model
-    {
+    let need_spawn = {
         let mut lock = ACTIVE_SERVER.lock().unwrap();
         if let Some(active) = lock.as_mut() {
             if active.model_path == model_path {
                 match active.child.try_wait() {
-                    Ok(None) => return Ok(()), // Still running fine
+                    Ok(None) => false, // Still running fine
                     _ => {
                         lock.take(); // Dead process, clean up
+                        true
                     }
                 }
             } else {
@@ -387,9 +388,20 @@ pub async fn ensure_server(model_path: &Path, app_dir: &Path) -> Result<(), anyh
                 let _ = active.child.kill();
                 let _ = active.child.wait();
                 lock.take();
+                true
             }
+        } else {
+            true
         }
+    };
+
+    if !need_spawn {
+        return Ok(());
     }
+
+    // Kill any orphan llama-server instances from previous runs holding file locks
+    kill_orphan_llama_servers();
+    tokio::time::sleep(Duration::from_millis(250)).await;
 
     // Find or auto-download binary
     let server_bin = find_or_download_llama_server(app_dir).await?;
@@ -902,6 +914,19 @@ pub fn stop_server() {
     if let Some(mut active) = lock.take() {
         let _ = active.child.kill();
         let _ = active.child.wait();
+    }
+    kill_orphan_llama_servers();
+}
+
+/// Kill any orphaned `llama-server.exe` processes on Windows that may be holding model file locks.
+pub fn kill_orphan_llama_servers() {
+    #[cfg(target_os = "windows")]
+    {
+        use crate::proc::NoWindow;
+        let _ = Command::new("taskkill")
+            .args(["/F", "/IM", "llama-server.exe"])
+            .no_window()
+            .output();
     }
 }
 

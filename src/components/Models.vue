@@ -598,7 +598,7 @@ function fmtEta(secs?: number): string {
   flex: 1 1 0;
   min-height: 0;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
   padding: 14px 22px;
 }
 
@@ -713,16 +713,16 @@ function fmtEta(secs?: number): string {
 
 .model-card-info {
   min-width: 0;
-  flex: 1;
+  flex: 1 1 0;
 }
 
 .model-card-name {
-  overflow: hidden;
   color: white;
   font-weight: 800;
   font-size: 0.88rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.25;
 }
 
 .model-card-meta {
@@ -772,7 +772,7 @@ function fmtEta(secs?: number): string {
 }
 
 .hf-toggle-btn {
-  margin-left: auto;
+  margin-left: 12px;
   flex-shrink: 0;
   font-size: 0.78rem;
   white-space: nowrap;
@@ -793,12 +793,16 @@ function fmtEta(secs?: number): string {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 12px;
   margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .quant-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
   gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .quant-card {
@@ -809,23 +813,27 @@ function fmtEta(secs?: number): string {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .quant-filename {
   font-weight: 700;
   font-size: 0.82rem;
   color: #e2e8f0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.25;
 }
 
 .quant-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.78rem;
+  gap: 4px;
+  font-size: 0.76rem;
   color: rgba(255, 255, 255, 0.5);
+  flex-wrap: wrap;
 }
 
 .quant-label-hl {

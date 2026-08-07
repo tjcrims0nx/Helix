@@ -1086,8 +1086,8 @@ pub async fn spawn_mcp_server(
     let mut child = cmd.spawn()
         .map_err(|e| format!("Failed to spawn {}: {}", command, e))?;
 
-    let stdout = child.stdout.take().expect("Failed to open stdout");
-    let stderr = child.stderr.take().expect("Failed to open stderr");
+    let stdout = child.stdout.take().ok_or_else(|| format!("Failed to capture stdout pipe for {}", command))?;
+    let stderr = child.stderr.take().ok_or_else(|| format!("Failed to capture stderr pipe for {}", command))?;
 
     let mut processes = state.processes.lock().await;
     processes.insert(plugin_id.clone(), Arc::new(Mutex::new(child)));

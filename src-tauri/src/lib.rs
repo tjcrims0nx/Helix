@@ -475,6 +475,11 @@ pub fn run() {
             browser::browser_extract_text,
             browser::browser_screenshot,
         ])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .build(tauri::generate_context!())
+        .expect("error while building tauri application")
+        .run(|_app_handle, event| {
+            if matches!(event, tauri::RunEvent::Exit | tauri::RunEvent::ExitRequested { .. }) {
+                llama_engine::stop_server();
+            }
+        });
 }
