@@ -1,57 +1,34 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
-    groups:
-      npm-minor-and-patch:
-        update-types: ["minor", "patch"]
-    auto-commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
-    allow:
-      - dependency-type: "all"
-
   - package-ecosystem: "cargo"
     directory: "/src-tauri"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     open-pull-requests-limit: 10
-    groups:
-      cargo-minor-and-patch:
-        update-types: ["minor", "patch"]
-    auto-commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
-    allow:
-      - dependency-type: "all"
-
-  - package-ecosystem: "github-actions"
+    labels:
+      - "dependencies"
+      - "security"
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-    auto-commit-message:
-      prefix: "chore(ci)"
-      include: "scope"
-
+      interval: "daily"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "security"
+  - package-ecosystem: "npm"
+    directory: "/skills-server"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "security"
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
-    auto-commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
-    allow:
-      - dependency-type: "all"
-
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
-    auto-commit-message:
-      prefix: "chore(docker)"
-      include: "scope"
+    labels:
+      - "dependencies"
+      - "security"
