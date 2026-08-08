@@ -28,7 +28,7 @@
     "@tauri-apps/cli": "^2.11.2",
     "@types/node": "^22.19.19",
     "@vitejs/plugin-vue": "^6.0.7",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "typescript": "~5.6.3",
     "vite": "^8.0.13",
     "vue-tsc": "^2.2.12"
