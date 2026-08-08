@@ -21,7 +21,7 @@ serde_json = "1"
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "io-util", "sync", "fs", "time", "process"] }
 reqwest = { version = "0.13", default-features = false, features = ["json", "stream", "rustls", "rustls-native-certs"] }
 futures-util = "0.3"
-sysinfo = "0.38"
+sysinfo = "0.39"
 log = "0.4"
 # Without a backend registered, every `log::` macro in this crate is a silent
 # no-op — which is how the storage failures below went unnoticed.
