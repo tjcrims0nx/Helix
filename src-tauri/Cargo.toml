@@ -37,7 +37,7 @@ rand = "0.10.2"
 # and returns NoEntry on every read — so the AES master key was regenerated on
 # each launch and nothing in helix.db was ever readable again. The native
 # backend for each target is selected below.
-keyring = { version = "3.6.3", default-features = false }
+keyring = { version = "4.1.6", default-features = false }
 hex = "0.4.3"
 base64 = "0.23"
 zip = { version = "6", default-features = false, features = ["deflate"] }
