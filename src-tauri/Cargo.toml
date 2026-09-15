@@ -71,7 +71,7 @@ windows-sys = { version = "0.61", features = [
   "Win32_UI_WindowsAndMessaging",
 ] }
 winreg = "0.56"
-dirs = "6"
+dirs = "7"
 
 [target.'cfg(target_os = "macos")'.dependencies]
 keyring = { version = "3.6.3", features = ["apple-native"] }
@@ -82,7 +82,7 @@ keyring = { version = "3.6.3", features = ["apple-native"] }
 keyring = { version = "3.6.3", features = ["linux-native-sync-persistent", "crypto-rust"] }
 
 [target.'cfg(not(windows))'.dependencies]
-dirs = "6"
+dirs = "7"
 
 [features]
 default = ["custom-protocol"]
