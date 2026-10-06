@@ -14,24 +14,24 @@
     "tauri:build": "tauri build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.29.0",
-    "@tauri-apps/api": "^2.11.0",
-    "@tauri-apps/plugin-dialog": "^2.7.1",
-    "@tauri-apps/plugin-shell": "^2.0.1",
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "@tauri-apps/api": "^2.12.1",
+    "@tauri-apps/plugin-dialog": "^2.8.1",
+    "@tauri-apps/plugin-shell": "^2.4.0",
     "@types/dompurify": "^3.2.0",
-    "dompurify": "^3.4.4",
-    "marked": "^18.0.3",
+    "dompurify": "^3.4.16",
+    "marked": "^18.0.14",
     "pinia": "^3.0.4",
-    "vue": "^3.5.34"
+    "vue": "^3.5.43"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.11.2",
+    "@tauri-apps/cli": "^2.12.1",
     "@types/node": "^24.13.3",
-    "@vitejs/plugin-vue": "^6.0.7",
+    "@vitejs/plugin-vue": "^6.0.9",
     "esbuild": "^0.28.0",
     "typescript": "~6.0.3",
-    "vite": "^8.0.13",
-    "vue-tsc": "^3.3.10"
+    "vite": "^8.3.2",
+    "vue-tsc": "^3.3.12"
   },
   "engines": {
     "node": ">=18"
